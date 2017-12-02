@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2017 at 07:38 PM
+-- Generation Time: Dec 02, 2017 at 08:49 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -43,7 +43,7 @@ CREATE TABLE `casualties` (
 INSERT INTO `casualties` (`id`, `date`, `time`, `type`, `userid`) VALUES
 (1, '2017-12-02', '04:07:09', 1, 1),
 (2, '2017-12-02', '04:07:09', 2, 2),
-(3, '2017-12-03', '04:07:09', 1, 1);
+(4, '2017-12-02', '04:07:09', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -63,9 +63,8 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `name`, `email`, `userid`) VALUES
-(1, 'asdf', 'a@a.com', 1),
-(2, 'jkh', 'b@b.com', 1),
-(3, 'lkjasdf', 'lksjadf@gmail.com', 2);
+(3, 'lkjasdf', 'lksjadf@gmail.com', 2),
+(4, 'test', 'y@y.com', 1);
 
 -- --------------------------------------------------------
 
@@ -107,7 +106,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `salt`, `first_name`, `last_name`, `device_mac`) VALUES
-(1, 'c@c.com', 'a7b593738f1fb2969fc39df48bf4a93a', '2807546895a227653334c18.02771899', 'test', 'lodi', '321'),
+(1, 'x@x.com', '5d8e138c9eeb2c203d685ef266d48c8b', '2807546895a227653334c18.02771899', 'test', 'lodi', '321'),
 (2, 'asdf@asdf.com', 'd04a64b495634a696949416f3ef6d9c7', '20384012375a22c5844b0ec8.96768026', 'asdf', 'asdf', '123');
 
 -- --------------------------------------------------------
@@ -128,8 +127,8 @@ CREATE TABLE `warnings` (
 INSERT INTO `warnings` (`id`, `description`) VALUES
 (1, 'Fire'),
 (2, 'Flood'),
-(3, 'Burglary'),
-(4, 'Earthquake');
+(3, 'Earthquake'),
+(4, 'Home Invasion');
 
 --
 -- Indexes for dumped tables
@@ -173,13 +172,13 @@ ALTER TABLE `warnings`
 -- AUTO_INCREMENT for table `casualties`
 --
 ALTER TABLE `casualties`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `device`
