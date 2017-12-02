@@ -139,6 +139,7 @@ if (empty($_SESSION['logged_in'])) {
                 <tr>
                   <th>Name</th>
                   <th>Email</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -149,8 +150,13 @@ if (empty($_SESSION['logged_in'])) {
                     $rows = $hQuery->fetch_assoc();
                     echo"
                     <tr>
+                      <form name='managecontact' id='managecontact' method='POST' action='action.php'>
                       <td>".$rows['name']."
                       <td>".$rows['email']."
+                      <td>
+                          <input type='hidden' name='id' value=".$rows['id']."> 
+                          <button class='btn btn-primary' type='submit' name='action' value='del_contact'>Delete</button>
+                      </form>
                     </tr>";
                   }
                 }
