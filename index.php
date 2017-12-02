@@ -239,7 +239,7 @@ if (empty($_SESSION['logged_in'])) {
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
-    <script src="js/sb-admin-charts.min.js"></script>
+    <script src="js/sb-admin-charts.js"></script>
   </div>
 </body>
 
