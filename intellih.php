@@ -2,6 +2,11 @@
 
 include('includes/config.php');
 
+if (empty($_POST['type']) || empty($_POST['mac'])) {
+	$mysqli->close();
+	exit();
+}
+
 $type=$_POST['type'];
 $mac=$_POST['mac'];
 $typeId=0;
@@ -23,5 +28,7 @@ if ($type == "fire") {
 if ($typeId > 0) {
 	$mysqli->query("INSERT INTO casualties VALUES (NULL, NOW(), NOW(), '$type', '$mac')");
 }
+
+$mysqli->close();
 
 ?>
