@@ -94,56 +94,15 @@ var myLineChart = new Chart(ctx, {
     }
   }
 });
-
-
-
 // -- Pie Chart Example
-var ctx = document.getElementById("myPieChart")
-
-/**
- * Counts the entries of a single incident
- * @param {String} typeColumn The value to be found in the column
- * @returns {Promise} The async operation to get the count of incidents 
- */
-var getCasualtiesData = function(typeColumn) {
-  return new Promise(function(succ, rejct) {
-    $.ajax({
-      type: "GET",
-      url: "getCasualties.php",
-      data: {getData: typeColumn},
-      success: function(data) {
-        succ(data);
-      },
-      error: function(err) {
-        rejct(err);
-      }
-    })
-  })
-}
-
-getCasualtiesData("fire").then(function(fire) {
-  getCasualtiesData('flood').then(function(flood) {
-    getCasualtiesData('quake').then(function(quake) {
-      getCasualtiesData('invasion').then(function(inv) {
-        var pie = new Chart(ctx, {
-          type: 'pie',
-          data: {
-            labels: ['Fire', 'Flash Floods', 'Earthquakes', 'Home Invasion/Murder'],
-            datasets: [{
-              data: [
-                fire.replace(/\D/g,''), 
-                flood.replace(/\D/g,''), 
-                quake.replace(/\D/g,''), 
-                inv.replace(/\D/g,'')
-            ],
-              backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745']
-            }]
-          }
-        });        
-      });
-    });
-  });
+var ctx = document.getElementById("myPieChart");
+var myPieChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ["Blue", "Red", "Yellow", "Green"],
+    datasets: [{
+      data: [12.21, 15.58, 11.25, 8.32],
+      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+    }],
+  },
 });
-
-
-
