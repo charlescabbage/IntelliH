@@ -115,7 +115,7 @@ if ($strAction == "login") {
 		}
 	}
 
-	$mysqli->query("UPDATE user SET first_name='$strFirstName', last_name='$strLastName', email='$strEmail', mac='$strDeviceMac' WHERE id='$strUserID'");
+	$mysqli->query("UPDATE user SET first_name='$strFirstName', last_name='$strLastName', email='$strEmail', device_mac='$strDeviceMac' WHERE id='$strUserID'");
 
 	if (!empty($strPassword)) {
 		if ($_POST['confirm_password'] != $strPassword) {
@@ -123,8 +123,13 @@ if ($strAction == "login") {
 			exit();
 		}
 		$strPasswordHash = md5(md5($strPassword).$_SESSION['logged_in']['salt']); // storing salt in session is not safe
-		$mysqli->query("UPDATE user SET first_name='$strFirstName', last_name='$strLastName', password='$strPasswordHash', email='$strEmail', mac='$strDeviceMac' WHERE id='$strUserID'");
+		$mysqli->query("UPDATE user SET first_name='$strFirstName', last_name='$strLastName', password='$strPasswordHash', email='$strEmail', device_mac='$strDeviceMac' WHERE id='$strUserID'");
 	}
+
+	$_SESSION['logged_in']['first_name'] = $strFirstName;
+	$_SESSION['logged_in']['last_name'] = $strLastName;
+	$_SESSION['logged_in']['email'] = $strEmail;
+	$_SESSION['logged_in']['mac'] = $strDeviceMac;
 
 	header("location: account.php");
 
@@ -140,6 +145,11 @@ if ($strAction == "login") {
 	}
 
 	$mysqli->query("INSERT INTO contacts VALUES (NULL, '$strName', '$strEmail', '$strUserID')");
+	header("location: contacts.php");
+
+} else if($strAction == "del_contact") {
+	$id = $_POST['id'];
+	$mysqli->query("DELETE FROM contacts WHERE id='$id'");
 	header("location: contacts.php");
 }
 
