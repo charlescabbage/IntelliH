@@ -21,7 +21,12 @@ if ($type == 1) {
 }
 
 if ($type > 0) {
-	$mysqli->query("INSERT INTO casualties VALUES (NULL, NOW(), NOW(), '$type', '$mac')");
+	$hQuery = $mysqli->query("SELECT * FROM user WHERE device_mac='$mac'");
+	if ($hQuery->num_rows == 1) {
+		$row = $hQuery->fetch_assoc();
+		$id = $row['id'];
+		$mysqli->query("INSERT INTO casualties VALUES (NULL, NOW(), NOW(), '$type', '$id')");
+	}
 }
 
 $mysqli->close();
