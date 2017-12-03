@@ -137,6 +137,7 @@ if ($strAction == "login") {
 
 	$strName = $_POST['name'];
 	$strEmail = $_POST['email'];
+	$strPhoneNo = $_POST['phone_no'];
 	$strUserID = $_SESSION['logged_in']['id'];
 
 	if (filter_var($strEmail, FILTER_VALIDATE_EMAIL) === false) {
@@ -144,7 +145,12 @@ if ($strAction == "login") {
 		exit();
 	}
 
-	$mysqli->query("INSERT INTO contacts VALUES (NULL, '$strName', '$strEmail', '$strUserID')");
+	if (!is_numeric($strPhoneNo)) {
+		header("location: contacts.php?response=phone-no-invalid");
+		exit();
+	}
+
+	$mysqli->query("INSERT INTO contacts VALUES (NULL, '$strName', '$strEmail', '$strUserID', '$strPhoneNo')");
 	header("location: contacts.php");
 
 } else if($strAction == "del_contact") {

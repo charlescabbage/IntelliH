@@ -84,18 +84,22 @@ if (empty($_SESSION['logged_in'])) {
               <button type="submit" class="btn btn-primary" name="action" value="add_contact">Add</button>
               <input class="" type="text" placeholder="Name" name="name">
               <input class="" type="text" placeholder="Email" name="email">
+              <input class="" type="text" placeholder="Phone No." name="phone_no">
+            </form>
               <?php
               if (isset($_GET['response']) && $_GET['response'] == "email-invalid") {
                 echo '<font color="red">Invalid Email</font><br>';
+              } else if (isset($_GET['response']) && $_GET['response'] == "phone-no-invalid") {
+                echo '<font color="red">Invalid Phone No.</font><br>';
               }
               ?>
-            </form>
             <br>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   <th>Name</th>
                   <th>Email</th>
+                  <th>Phone No.</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -110,6 +114,7 @@ if (empty($_SESSION['logged_in'])) {
                       <form name='managecontact' id='managecontact' method='POST' action='action.php'>
                       <td>".$rows['name']."
                       <td>".$rows['email']."
+                      <td>".$rows['phone_no']."
                       <td>
                           <input type='hidden' name='id' value=".$rows['id']."> 
                           <button class='btn btn-primary' type='submit' name='action' value='del_contact'>Delete</button>
