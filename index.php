@@ -145,7 +145,7 @@ if (empty($_SESSION['logged_in'])) {
           <!-- Example Pie Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-pie-chart"></i> Pie Chart Statistics</div>
+              <i class="fa fa-pie-chart"></i> Casualty Pie Chart</div>
             <div class="card-body">
               <canvas id="myPieChart" width="100%" height="100"></canvas>
             </div>

@@ -2,13 +2,13 @@
 
 include('includes/config.php');
 
-if (empty($_POST['type']) || empty($_POST['mac'])) {
+if (empty($_GET['type']) || empty($_GET['mac'])) {
 	$mysqli->close();
 	exit();
 }
 
-$type=$_POST['type'];
-$mac=$_POST['mac'];
+$type=$_GET['type'];
+$mac=$_GET['mac'];
 $subj="";
 $msg="";
 

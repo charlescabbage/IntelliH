@@ -12,10 +12,10 @@ if(isset($_GET['getData']) && $_GET['getData'] === 'fire') {
 else if(isset($_GET['getData']) && $_GET['getData'] === 'flood') {
     $data = $mysqli->query("SELECT COUNT(type) AS count FROM casualties WHERE type = '2' AND userid='$id'");
 }
-else if(isset($_GET['getData']) && $_GET['getData'] === 'invasion') {
+else if(isset($_GET['getData']) && $_GET['getData'] === 'quake') {
     $data = $mysqli->query("SELECT COUNT(type) AS count FROM casualties WHERE type = '3' AND userid='$id'");    
 }
-else if(isset($_GET['getData']) && $_GET['getData'] === 'quake') {
+else if(isset($_GET['getData']) && $_GET['getData'] === 'invasion') {
     $data = $mysqli->query("SELECT COUNT(type) AS count FROM casualties WHERE type = '4' AND userid='$id'");    
 }
 else {
